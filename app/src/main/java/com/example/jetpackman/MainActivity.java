@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         gyroscopeEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
-                if (sensorEvent.values[2] > 1.0f) {
+                if (sensorEvent.values[2] > 1.0f) { //gauche
                     getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-                } else if (sensorEvent.values[2] < -1.0f) {
+                } else if (sensorEvent.values[2] < -1.0f) { //droite
                     getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
                 }
             }
