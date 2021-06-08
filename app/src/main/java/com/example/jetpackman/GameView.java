@@ -58,10 +58,12 @@ public class GameView extends View implements SensorEventListener {
         if(this.currentX < 0)
         {
             Log.i("DEBUG", "You loose");
+            this.currentX = 0;
         }
         else if (this.currentX+this.jetpackWidth > getWidth())
         {
             Log.i("DEBUG", "You loose");
+            this.currentX = this.getWidth()-this.jetpackWidth;
         }
         this.invalidate();
     }
@@ -70,14 +72,13 @@ public class GameView extends View implements SensorEventListener {
     public void onSensorChanged(SensorEvent sensorEvent) {
         float x = sensorEvent.values[2];
         if (sensorEvent.values[2] > 1.0f)
-//        { //gauche
-//            moveJetpack(-x*10);
-//        }
-//        else if (sensorEvent.values[2] < -1.0f)
-//        { //droite
-//            moveJetpack(-x*10);
-//        }
+        { //gauche
             moveJetpack(-x*10);
+        }
+        else if (sensorEvent.values[2] < -1.0f)
+        { //droite
+            moveJetpack(-x*10);
+        }
     }
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
