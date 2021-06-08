@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <view
-        android:id="@+id/view1"
+        android:id="@+id/viewJetpack"
         class="com.example.jetpackman.GameView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
