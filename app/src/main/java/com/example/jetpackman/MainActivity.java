@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewJetpack = new GameView(this);
-        setContentView(viewJetpack);
 
+        setContentView(R.layout.activity_main);
+        viewJetpack = (GameView)findViewById(R.id.viewJetpack);
+        textView = (TextView) findViewById(R.id.textView);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        textView = (TextView) findViewById(R.id.textView);
+
         new CountDownTimer(Long.MAX_VALUE, 1000){
             public void onTick(long millisUntilFinished){
                 textView.setText(String.valueOf(counter));
