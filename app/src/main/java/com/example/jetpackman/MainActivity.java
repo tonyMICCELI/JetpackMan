@@ -9,6 +9,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.Toast;
+/*import android.view.View;
+import android.widget.Button;*/
+import android.widget.TextView;
+import android.os.CountDownTimer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private Sensor gyroscopeSensor;
 
     private GameView viewJetpack;
+
+    public int counter;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        textView = (TextView) findViewById(R.id.textView);
+        new CountDownTimer(Long.MAX_VALUE, 1000){
+            public void onTick(long millisUntilFinished){
+                textView.setText(String.valueOf(counter));
+                counter++;
+            }
+            public  void onFinish(){
+                textView.setText("SHOULD BE ENDLESS");
+            }
+        }.start();
     }
 
     @Override
