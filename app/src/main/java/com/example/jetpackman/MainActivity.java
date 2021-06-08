@@ -14,12 +14,15 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorManager sensorManager;
     private Sensor gyroscopeSensor;
-    private SensorEventListener gyroscopeEventListener;
+
+    private GameView viewJetpack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        viewJetpack = new GameView(this);
+        setContentView(viewJetpack);
+
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
@@ -28,31 +31,18 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        gyroscopeEventListener = new SensorEventListener() {
-            @Override
-            public void onSensorChanged(SensorEvent sensorEvent) {
-                if (sensorEvent.values[2] > 1.0f) { //gauche
-                    getWindow().getDecorView().setBackgroundColor(Color.BLUE);
-                } else if (sensorEvent.values[2] < -1.0f) { //droite
-                    getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
-                }
-            }
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int i) {
 
-            }
-        };
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(gyroscopeEventListener, gyroscopeSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        sensorManager.registerListener(viewJetpack, gyroscopeSensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        sensorManager.unregisterListener(gyroscopeEventListener);
+        sensorManager.unregisterListener(viewJetpack);
     }
 }
