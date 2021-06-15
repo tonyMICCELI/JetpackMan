@@ -17,6 +17,30 @@
         android:textSize="60sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameOver"
+        android:layout_marginTop="100dp"
+        android:gravity="center_horizontal"
+        android:text="Your score is:"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/scoreValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameOver"
+        android:layout_marginTop="140dp"
+        android:gravity="center_horizontal"
+        android:text="17"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/retryButton"
         android:layout_width="match_parent"
