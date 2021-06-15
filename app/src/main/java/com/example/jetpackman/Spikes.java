@@ -23,6 +23,13 @@ public class Spikes extends View {
     private int currentX[] = new int[50];
     private int currentY[] = new int[50];
 
+    private Bitmap spikesBitmap_right[] = new Bitmap[50];
+
+    private int spikesWidth_right[] = new int[50];
+    private int spikesHeight_right[] = new int[50];
+    private int currentX_right[] = new int[50];
+    private int currentY_right[] = new int[50];
+
     public Spikes(Context context, AttributeSet attrsSet)
     {
         super(context,attrsSet);
@@ -35,10 +42,16 @@ public class Spikes extends View {
 
     private void init( Context context ) {
         for(int i=0; i<50; i++) {
-            this.spikesBitmap[i] = BitmapFactory.decodeResource(getResources(), R.drawable.spikes);
+            this.spikesBitmap[i] = BitmapFactory.decodeResource(getResources(), R.drawable.spikes_left);
             spikesBitmap[i] = Bitmap.createScaledBitmap(spikesBitmap[i],64 ,64, true);
             this.spikesWidth[i] = spikesBitmap[i].getWidth();
             this.spikesHeight[i] = spikesBitmap[i].getHeight();
+        }
+        for(int j=0; j<50; j++) {
+            this.spikesBitmap_right[j] = BitmapFactory.decodeResource(getResources(), R.drawable.spikes_right);
+            spikesBitmap_right[j] = Bitmap.createScaledBitmap(spikesBitmap_right[j],64 ,64, true);
+            this.spikesWidth_right[j] = spikesBitmap_right[j].getWidth();
+            this.spikesHeight_right[j] = spikesBitmap_right[j].getHeight();
         }
 
     }
@@ -50,6 +63,10 @@ public class Spikes extends View {
             this.currentX[i] = 0;
             this.currentY[i] = i*60;
         }
+        for(int j=0; j<50; j++){
+            this.currentX_right[j] = getWidth()-64;
+            this.currentY_right[j] = j*60;
+        }
 
     }
 
@@ -59,6 +76,10 @@ public class Spikes extends View {
         for(int i=0; i<50; i++)
         {
             canvas.drawBitmap(this.spikesBitmap[i], this.currentX[i], this.currentY[i], this.spikesPaint);
+        }
+        for(int j=0; j<50; j++)
+        {
+            canvas.drawBitmap(this.spikesBitmap_right[j], this.currentX_right[j], this.currentY_right[j], this.spikesPaint);
         }
 
     }
