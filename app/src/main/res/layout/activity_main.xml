@@ -7,6 +7,12 @@
     tools:context=".MainActivity">
 
     <view
+        android:id="@+id/spikes"
+        class="com.example.jetpackman.Spikes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <view
         android:id="@+id/viewJetpack"
         class="com.example.jetpackman.GameView"
         android:layout_width="match_parent"
@@ -20,4 +26,5 @@
         android:id="@+id/textView"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="40sp" />
+
 </RelativeLayout>

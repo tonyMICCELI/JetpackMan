@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Sensor gyroscopeSensor;
 
     private GameView viewJetpack;
+    private Spikes spikes;
 
     public int counter;
     TextView textView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         viewJetpack = (GameView)findViewById(R.id.viewJetpack);
+        spikes = (Spikes)findViewById(R.id.spikes);
         textView = (TextView) findViewById(R.id.textView);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
