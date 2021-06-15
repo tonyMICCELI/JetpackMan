@@ -1,6 +1,7 @@
 package com.example.jetpackman;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -59,11 +60,15 @@ public class GameView extends View implements SensorEventListener {
         {
             Log.i("DEBUG", "You loose");
             this.currentX = 0;
+            Intent gameOverIntent = new Intent(getContext(), GameOverMenu.class);
+            getContext().startActivity(gameOverIntent);
         }
         else if (this.currentX+this.jetpackWidth > getWidth())
         {
             Log.i("DEBUG", "You loose");
             this.currentX = this.getWidth()-this.jetpackWidth;
+            Intent gameOverIntent = new Intent(getContext(), GameOverMenu.class);
+            getContext().startActivity(gameOverIntent);
         }
         this.invalidate();
     }
